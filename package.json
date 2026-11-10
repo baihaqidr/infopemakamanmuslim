@@ -1,0 +1,17 @@
+{
+  "name": "infopemakamanmuslim-clone",
+  "version": "1.0.0",
+  "description": "Full clone of infopemakamanmuslim.com - Al Azhar Memorial Garden Landing Page",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "preview": "npx serve -l 3000 ."
+  },
+  "keywords": [
+    "landing-page",
+    "al-azhar-memorial-garden",
+    "pemakaman-muslim"
+  ],
+  "author": "",
+  "license": "ISC"
+}
