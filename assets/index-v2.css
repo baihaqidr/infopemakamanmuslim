@@ -56,11 +56,11 @@ p {
   overflow-wrap: break-word;
 }
 
-/* Hero Section Layout Protection */
+/* Hero Section Layout Protection - Super Compact & Mobile Friendly */
 #hero {
-  min-height: calc(100vh - 80px) !important;
-  padding-top: 6.5rem !important;
-  padding-bottom: 5.5rem !important;
+  min-height: auto !important;
+  padding-top: 1.25rem !important;
+  padding-bottom: 2.5rem !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -68,8 +68,15 @@ p {
 
 @media (min-width: 640px) {
   #hero {
-    padding-top: 8rem !important;
-    padding-bottom: 6.5rem !important;
+    padding-top: 2rem !important;
+    padding-bottom: 3.25rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  #hero {
+    padding-top: 2.5rem !important;
+    padding-bottom: 3.75rem !important;
   }
 }
 
