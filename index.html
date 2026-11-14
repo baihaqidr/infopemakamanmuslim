@@ -69,6 +69,78 @@
     .text-balance {
       text-wrap: balance;
     }
+
+    /* Cinematic Ken Burns Motion for Hero Background */
+    @keyframes kenburns {
+      0% {
+        transform: scale(1.02) translate(0, 0);
+      }
+      50% {
+        transform: scale(1.09) translate(-1.2%, -1%);
+      }
+      100% {
+        transform: scale(1.04) translate(1%, 0.8%);
+      }
+    }
+    .animate-kenburns {
+      animation: kenburns 26s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    /* Ambient Breathing Glowing Orbs for Depth */
+    @keyframes floatOrb1 {
+      0%, 100% {
+        transform: translate(0px, 0px) scale(1);
+        opacity: 0.3;
+      }
+      50% {
+        transform: translate(45px, -30px) scale(1.18);
+        opacity: 0.45;
+      }
+    }
+    .animate-float-orb-1 {
+      animation: floatOrb1 16s ease-in-out infinite;
+      will-change: transform, opacity;
+    }
+
+    @keyframes floatOrb2 {
+      0%, 100% {
+        transform: translate(0px, 0px) scale(1);
+        opacity: 0.22;
+      }
+      50% {
+        transform: translate(-40px, 25px) scale(1.15);
+        opacity: 0.38;
+      }
+    }
+    .animate-float-orb-2 {
+      animation: floatOrb2 20s ease-in-out infinite;
+      will-change: transform, opacity;
+    }
+
+    /* Subtle Arabesque Pattern Drift */
+    @keyframes driftPattern {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 220px 220px;
+      }
+    }
+    .animate-pattern-drift {
+      animation: driftPattern 50s linear infinite;
+      will-change: background-position;
+    }
+
+    /* Accessibility: Respect Reduced Motion Preference */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-kenburns,
+      .animate-float-orb-1,
+      .animate-float-orb-2,
+      .animate-pattern-drift {
+        animation: none !important;
+      }
+    }
   </style>
 
   <!-- Schema.org Organization Data -->
@@ -169,12 +241,27 @@
   <!-- =========================================================================
        3. HERO SECTION (HIGH CONVERTING & PERSUASIVE)
        ========================================================================= -->
-  <section id="hero" class="relative bg-brand-deep text-white overflow-hidden py-12 sm:py-16 lg:py-20">
-    <!-- Subtle Background Image with Dark Vignette -->
-    <div class="absolute inset-0 z-0 opacity-25 mix-blend-overlay">
-      <img src="/images/hero-bg.jpg" alt="Al Azhar Memorial Garden Karawang" class="w-full h-full object-cover" />
+  <section id="hero" class="relative bg-brand-deep text-white overflow-hidden py-14 sm:py-20 lg:py-24">
+    <!-- 1. Motion Background Layer: Cinematic Ken Burns Landscape Image -->
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <img src="/images/hero-landscape.jpg" alt="Pemandangan Asri Al Azhar Memorial Garden Karawang" class="w-full h-full object-cover scale-105 animate-kenburns opacity-35 mix-blend-luminosity filter brightness-95 contrast-105" />
     </div>
-    <div class="absolute inset-0 bg-gradient-to-b from-brand-deep/95 via-brand-deep/90 to-brand-deep z-0"></div>
+
+    <!-- 2. Islamic Arabesque Pattern Drift (Slow subtle moving texture) -->
+    <div class="absolute inset-0 z-0 pointer-events-none opacity-10 animate-pattern-drift" style="background-image: url('/images/arabesque.png'); background-repeat: repeat;"></div>
+
+    <!-- 3. Ambient Breathing Glow Orbs (Emerald & Warm Gold Depth) -->
+    <div class="absolute -top-28 -left-28 w-96 sm:w-[500px] h-96 sm:h-[500px] rounded-full bg-gradient-to-br from-emerald-400/25 via-brand-emerald/15 to-transparent blur-3xl pointer-events-none animate-float-orb-1 z-0"></div>
+    <div class="absolute -bottom-28 -right-28 w-96 sm:w-[550px] h-96 sm:h-[550px] rounded-full bg-gradient-to-tl from-brand-gold/30 via-brand-goldDark/15 to-transparent blur-3xl pointer-events-none animate-float-orb-2 z-0"></div>
+
+    <!-- 4. Deep Vignette Overlay (Ensures AAA contrast & crisp text readability) -->
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-deep/95 via-brand-deep/80 to-brand-deep pointer-events-none z-0"></div>
+
+    <!-- Optional: HTML5 Video Background (Uncomment if you have a local MP4 drone video e.g. /images/hero-video.mp4)
+    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-25 z-0 pointer-events-none">
+      <source src="/images/hero-video.mp4" type="video/mp4" />
+    </video>
+    -->
 
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <!-- Badge -->
