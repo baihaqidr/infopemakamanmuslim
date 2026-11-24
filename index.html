@@ -422,10 +422,10 @@
 
       <!-- Tipe Makam Filter Tabs (Interactive UX Pro Max - Uniform Rounded-XL & Borders) -->
       <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10" id="tipe-filter-container">
-        <button type="button" class="tipe-filter-btn px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-brand-emerald text-white border border-brand-emerald shadow-sm" data-filter="all">Semua Tipe</button>
-        <button type="button" class="tipe-filter-btn px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white text-gray-700 hover:bg-gray-50 border border-gray-200" data-filter="single">Single (1 Lubang)</button>
-        <button type="button" class="tipe-filter-btn px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white text-gray-700 hover:bg-gray-50 border border-gray-200" data-filter="double">Double (2 Lubang)</button>
-        <button type="button" class="tipe-filter-btn px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white text-gray-700 hover:bg-gray-50 border border-gray-200" data-filter="family">Family (4-14 Lubang)</button>
+        <button type="button" class="tipe-filter-btn px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-colors bg-brand-emerald text-white border border-brand-emerald shadow-sm hover:bg-brand-deep focus:outline-none cursor-pointer" data-filter="all">Semua Tipe</button>
+        <button type="button" class="tipe-filter-btn px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-colors bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 hover:text-brand-emerald focus:outline-none cursor-pointer" data-filter="single">Single (1 Lubang)</button>
+        <button type="button" class="tipe-filter-btn px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-colors bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 hover:text-brand-emerald focus:outline-none cursor-pointer" data-filter="double">Double (2 Lubang)</button>
+        <button type="button" class="tipe-filter-btn px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-colors bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 hover:text-brand-emerald focus:outline-none cursor-pointer" data-filter="family">Family (4-14 Lubang)</button>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="tipe-makam-grid">
@@ -1000,18 +1000,21 @@
         }
       });
     });
-    // 3. Tipe Makam Filter Tabs Interaction (Uniform Border & Active State)
+    // 3. Tipe Makam Filter Tabs Interaction (Glitch-Free State Switcher)
     const filterBtns = document.querySelectorAll('.tipe-filter-btn');
     const cards = document.querySelectorAll('.kavling-card');
+    const activeFilterClasses = ['bg-brand-emerald', 'text-white', 'border-brand-emerald', 'shadow-sm', 'hover:bg-brand-deep'];
+    const inactiveFilterClasses = ['bg-white', 'text-gray-700', 'border-gray-200', 'hover:bg-gray-50', 'hover:text-brand-emerald'];
+
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const filter = btn.getAttribute('data-filter');
         filterBtns.forEach(b => {
-          b.classList.remove('bg-brand-emerald', 'text-white', 'border-brand-emerald', 'shadow-sm');
-          b.classList.add('bg-white', 'text-gray-700', 'border-gray-200');
+          b.classList.remove(...activeFilterClasses);
+          b.classList.add(...inactiveFilterClasses);
         });
-        btn.classList.remove('bg-white', 'text-gray-700', 'border-gray-200');
-        btn.classList.add('bg-brand-emerald', 'text-white', 'border-brand-emerald', 'shadow-sm');
+        btn.classList.remove(...inactiveFilterClasses);
+        btn.classList.add(...activeFilterClasses);
 
         cards.forEach(card => {
           const category = card.getAttribute('data-category');
