@@ -13,49 +13,17 @@ h1, h2, h3, h4 {
 /* Cinematic Ken Burns Motion for Hero Background */
 @keyframes kenburns {
   0% { transform: scale(1.02) translate(0, 0); }
-  50% { transform: scale(1.09) translate(-1.2%, -1%); }
-  100% { transform: scale(1.04) translate(1%, 0.8%); }
+  50% { transform: scale(1.06) translate(-1%, -0.8%); }
+  100% { transform: scale(1.03) translate(0.8%, 0.6%); }
 }
 .animate-kenburns {
   animation: kenburns 26s ease-in-out infinite alternate;
   will-change: transform;
 }
 
-/* Ambient Glowing Orbs */
-@keyframes floatOrb1 {
-  0%, 100% { transform: translate(0px, 0px) scale(1); opacity: 0.3; }
-  50% { transform: translate(45px, -30px) scale(1.18); opacity: 0.45; }
-}
-.animate-float-orb-1 {
-  animation: floatOrb1 16s ease-in-out infinite;
-  will-change: transform, opacity;
-}
-
-@keyframes floatOrb2 {
-  0%, 100% { transform: translate(0px, 0px) scale(1); opacity: 0.22; }
-  50% { transform: translate(-40px, 25px) scale(1.15); opacity: 0.38; }
-}
-.animate-float-orb-2 {
-  animation: floatOrb2 20s ease-in-out infinite;
-  will-change: transform, opacity;
-}
-
-/* Subtle Pattern Drift */
-@keyframes driftPattern {
-  0% { background-position: 0 0; }
-  100% { background-position: 220px 220px; }
-}
-.animate-pattern-drift {
-  animation: driftPattern 50s linear infinite;
-  will-change: background-position;
-}
-
 /* Accessibility: Respect Reduced Motion Preference */
 @media (prefers-reduced-motion: reduce) {
-  .animate-kenburns,
-  .animate-float-orb-1,
-  .animate-float-orb-2,
-  .animate-pattern-drift {
+  .animate-kenburns {
     animation: none !important;
   }
 }
